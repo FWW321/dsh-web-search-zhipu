@@ -45,6 +45,11 @@ profile patch 行 `config` > 环境变量(仅 key)。
 拒以 -401,实测)。provider 缓存会话并复用;端点/key 变更或服务端
 丢弃会话时透明重握手,一次搜索内不会混用两个会话。
 
+可观测:每次搜索调用记入发起 agent 的会话,事件
+`web/zhipu-search-mcp-request` 载 `{ mcpURL, tool, arguments }` ——
+合并后的最终参数(`toolArguments` 覆盖可见;官方 deepseek provider
+同模式,其事件为 `web/deepseek-search-llm-request`)。
+
 ## Nix(nixdsh 消费)
 
 ```nix
