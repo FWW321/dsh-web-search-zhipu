@@ -19,6 +19,11 @@
     "type": "git",
     "url": "git+https://github.com/FWW321/dsh-web-search-zhipu.git"
   },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
   "type": "module",
   "main": "lib/index.js",
   "exports": {
