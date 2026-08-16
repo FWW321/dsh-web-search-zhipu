@@ -42,10 +42,12 @@ profile patch 行 `config` > 环境变量(仅 key)。
 拒以 -401,实测)。provider 缓存会话并复用;key 变更或服务端丢弃
 会话时透明重握手,一次搜索内不会混用两个会话。
 
-可观测:每次搜索调用记入发起 agent 的会话,事件
-`web/zhipu-search-mcp-request` 载 `{ arguments }` —— 合并后的最终
-参数(`toolArguments` 覆盖可见;官方 deepseek provider 同模式,其
-事件为 `web/deepseek-search-llm-request`)。
+可观测:rc.6 **无**会话事件审计。官方 deepseek provider 的
+`web/deepseek-search-llm-request` 之所以能写,是它注册在 harness 的
+封闭已知事件集里(session-persistence KNOWN_SESSION_EVENT_TYPES);
+仓库外插件事件读路径直接拒读(SessionFormatUnsupportedError,实测
+中毒会话不可回放),且 ignorable 标记无公开写入口 —— 自定义审计
+事件待上游开放注册面后再加。
 
 ## Nix(nixdsh 消费)
 
