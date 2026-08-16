@@ -1,0 +1,13 @@
+# The dsh-web-search-zhipu bundle patch.
+#
+# Inserts the Zhipu search provider into the profile. It must NOT re-define
+# rows owned by official bundle patches (e.g. dsh-base's `- id: web` row):
+# duplicate ids inside the bundle group fail the loader, while the user's own
+# profile cordis.patch.yml (applied last) may override rows by id.
+#
+# Nothing is configured here on purpose: endpoint, key and tool arguments are
+# user-owned (profile patch config, Settings section `web-search-zhipu`, or
+# ZHIPU_API_KEY in the environment).
+- insert:
+    - id: web-search-zhipu
+      name: '@fww/dsh-web-search-zhipu'
