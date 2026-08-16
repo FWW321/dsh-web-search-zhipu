@@ -12,16 +12,16 @@ Zhipu BigModel 网页搜索 provider,接入 DeepSeek Harness (dsh) 的 web
 
 ## 端点(用户可配)
 
-实测支持 `open.bigmodel.cn/api/mcp/<service>/mcp` 形态的
-streamable-http MCP 服务(需 Bearer 鉴权 + MCP 会话握手):
+搜索语义的 streamable-http MCP 服务(需 Bearer 鉴权 + MCP 会话握手),
+实测 `open.bigmodel.cn/api/mcp/web_search_prime/mcp`:
 
-| service | mcpURL | tool |
-|---|---|---|
-| 智能搜索 | `.../web_search_prime/mcp` | `web_search_prime`(默认) |
-| 网页阅读 | `.../web_reader/mcp` | (非搜索语义,不建议) |
+- `mcpURL`(默认即上式)与 `tool`(默认 `web_search_prime`)可配,是为
+  Zhipu 将来其他**搜索**端点留的逃生口
+- 同域的 `web_reader` 是**阅读**语义(URL→正文),属 `ctx.web` 的
+  fetch 缝位(`registerFetchProvider`),与本包无关 —— 继续走
+  mcpServers 直挂或另做 fetch provider 包
 
-其他同形态服务改 `mcpURL` + `tool` 即可,参数进 `arguments` 由
-`toolArguments` 扩展(见下)。
+参数进 `arguments` 由 `toolArguments` 扩展(见下)。
 
 ## 配置
 
