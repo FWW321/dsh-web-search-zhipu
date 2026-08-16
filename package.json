@@ -1,6 +1,6 @@
 {
   "name": "@fww/dsh-web-search-zhipu",
-  "description": "Zhipu BigModel web search provider for DeepSeek Harness (dsh): user-configured MCP endpoints (web_search_prime et al.) behind a WebSearchProvider for the ctx.web seam, with session handshake and Bearer auth.",
+  "description": "Zhipu BigModel web search provider for DeepSeek Harness (dsh): fixed web_search_prime MCP endpoint behind a ctx.web WebSearchProvider, with session handshake, Bearer auth, and per-search session auditing.",
   "version": "0.1.0",
   "keywords": [
     "deepseek-harness",
